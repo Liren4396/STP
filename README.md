@@ -16,13 +16,15 @@ UDP 套接字通信
 使用方法  
 运行接收方  
 bash  
-python3 receiver.py 54321 10  
-此命令在 54321 端口上启动接收方，等待消息最多 10 秒  
+python3 receiver.py receiver_port sender_port txt_file_received max_win  
+python3 receiver.py 56007 59606 1000  
+此命令启动接收方，指定自身端口为56007，接收 59606端口 的接收方发过来的数据，滑动窗口窗口大小为1000字节  
   
 运行发送方  
 bash  
-python3 sender.py 127.0.0.1 54321 30 1000  
-此命令启动发送方，向 127.0.0.1:54321 的接收方传输随机数字，持续 30 秒，滑动窗口大小为 1000  
+python3 sender.py sender_port receiver_port txt_file_to_send max_win rto flp rlp  
+python3 sender.py 59606 56007 test1.txt 1000 500 0.1 0.1  
+此命令启动发送方，指定自身端口为59606，向 56007端口 的接收方传输随机数字，滑动窗口大小为 1000 字节，超时重传时间间隔为 500ms 正向丢包率0.1，反向丢包率0.1  
   
 描述  
 发送方有三个命令行参数：接收方的主机名/IP、端口号和运行时长  
