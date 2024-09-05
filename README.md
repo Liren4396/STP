@@ -17,8 +17,8 @@ UDP 套接字通信
 运行接收方  
 bash  
 python3 receiver.py receiver_port sender_port txt_file_received max_win  
-python3 receiver.py 56007 59606 1000  
-此命令启动接收方，指定自身端口为56007，接收 59606端口 的接收方发过来的数据，滑动窗口窗口大小为1000字节  
+python3 receiver.py 56007 59606 output 1000  
+此命令启动接收方，指定自身端口为56007，接收 59606端口 的接收方发过来的数据，输出到output文件中，滑动窗口窗口大小为1000字节  
   
 运行发送方  
 bash  
